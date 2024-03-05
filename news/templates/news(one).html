@@ -1,0 +1,20 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+<!-- Название у нас будет News -->
+{% block title %}
+News
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим саму новость, идентификатор которого был передан в url -->
+{% block content %}
+<h1>{{ News.name|censor }}</h1>
+<hr>
+<h2>{{ News.category.name }}</h2>
+<hr>
+<h3>{{ News.dataCreations|date:'d M Y' }}</h3>
+<hr>
+<h4>{{ News.description|censor }}</h4>
+{% endblock content %}
